@@ -29,11 +29,14 @@ function getUserInfo() {
         // },
         success: function(response) {
             if (response.status !== 0) {
+                console.log(response);
                 return layui.layer.msg('获取用户信息失败')
             }
             // 调用 renderAvatar()
             renderAvatar(response.data);
-        },
+        }
+
+
         // 不论成功还是失败 最终都会 调用 complete 回调函数
         // complete: function(res) {
         //     // 在 complete 回调函数总 可以使用 res.responseJSON 拿到服务器 响应回来的数据
@@ -50,7 +53,8 @@ function getUserInfo() {
 };
 // TODO:s渲染用户头像
 function renderAvatar(user) {
-    // 1. 获取用户名称
+    // 1. 获取用户名称'
+    console.log(user);
     var name = user.nickname || user.username;
     // 2. 设置欢迎文本
     $('.welcome').html('欢迎&nbsp;&nbsp;' + name);
